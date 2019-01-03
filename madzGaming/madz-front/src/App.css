@@ -8,13 +8,51 @@
 .text-center{
   text-align: center;
 }
+.Font-color-white{
+  color: #ffffff;
+}
+/* -----------------------------------------------------------------------------
+                              Margin
+--------------------------------------------------------------------------------*/
+.Container-margin{
+  background-color: white;
+  opacity: 0;
+}
+.Margin-xxs{
+  margin: 5px;
+}
+.Margin-xs{
+  margin: 10px;
+}
+.Margin-xl{
+  margin: 15px;
+}
+.Margin-xxl{
+  margin: 30px;
+}
+
+
 
 /* -----------------------------------------------------------------------------
                                Background
 --------------------------------------------------------------------------------*/
+.Background-setting{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .Background-white{
   background-color: #ecf0f1;
 }
+.Background-landing{
+  background-image: url("./img/background-landing.jpg");
+}
+.Background-main-fortnite{
+  background-color: #DDE8EF;
+}
+
+
+
 /* -----------------------------------------------------------------------------
                            LandingPage
 --------------------------------------------------------------------------------*/
@@ -29,5 +67,26 @@
   align-items: center;
 }
 .LandingContent{
-  margin: 20px;
+  margin: 30px;
+}
+.img-game-landing{
+  border: 1px solid #bdc3c7;
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.img-game-landing:hover{
+  cursor: pointer;
+  -webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+/* -----------------------------------------------------------------------------
+                              FortniteScreen
+--------------------------------------------------------------------------------*/
+
+#FortniteScreen-container{
+  width: 100vw;
+  height: 100vh;
 }
