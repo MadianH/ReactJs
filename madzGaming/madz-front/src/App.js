@@ -6,15 +6,23 @@ import LandingPage from './Screens/LandingPage';
 import FortniteScreen from './Screens/FortniteScreen';
 import AtlasScreen from './Screens/AtlasScreen';
 
+import ModalFormReducer from './Reducers/ModalForm.reducer';
+import {Provider} from 'react-redux';
+import {createStore, combineReducers}  from 'redux';
+
+const store = createStore(combineReducers({ModalFormReducer}));
+
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Route exact path="/" component={LandingPage}></Route>
-          <Route exact path="/Fortnite" component={FortniteScreen}></Route>
-          <Route exact path="/Atlas" component={AtlasScreen}></Route>
-        </div>
+        <Provider store={store}>
+          <div>
+            <Route exact path="/" component={LandingPage}></Route>
+            <Route exact path="/Fortnite" component={FortniteScreen}></Route>
+            <Route exact path="/Atlas" component={AtlasScreen}></Route>
+          </div>
+        </Provider>  
       </Router>
     );
   }

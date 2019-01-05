@@ -11,6 +11,9 @@
 .Font-color-white{
   color: #ffffff;
 }
+.Font-size-xxl{
+  font-size: 40px;
+}
 /* -----------------------------------------------------------------------------
                               Margin
 --------------------------------------------------------------------------------*/
@@ -50,6 +53,9 @@
 .Background-main-fortnite{
   background-color: #DDE8EF;
 }
+.Background-atlas{
+  background-image: url("./img/atlas-background.jpg");
+}
 
 
 
@@ -57,8 +63,8 @@
                            LandingPage
 --------------------------------------------------------------------------------*/
 #LandingContainer{
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 #CardContainer{
   display: flex;
@@ -67,7 +73,7 @@
   align-items: center;
 }
 .LandingContent{
-  margin: 30px;
+  margin: 20px;
 }
 .img-game-landing{
   border: 1px solid #bdc3c7;
@@ -85,8 +91,19 @@
 /* -----------------------------------------------------------------------------
                               FortniteScreen
 --------------------------------------------------------------------------------*/
-
 #FortniteScreen-container{
   width: 100vw;
   height: 100vh;
+}
+
+/* -----------------------------------------------------------------------------
+                              AtlasScreen
+--------------------------------------------------------------------------------*/
+#AtlasScreen-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -15,7 +15,6 @@ class CardLanding  extends Component {
         <Link className="btn" to={this.props.link}>
           <img className="img-cent-pourcent img-game-landing" src={this.props.background} />
         </Link>
-
       </div>
     );
   }
