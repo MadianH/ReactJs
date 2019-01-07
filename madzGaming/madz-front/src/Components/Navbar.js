@@ -1,9 +1,9 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem, Fa } from "mdbreact";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import ModalForm, {FormPage} from './ModalForm.js'
+import ModalForm, {FormPage} from '../Components/Modals/ModalForm.js'
 
 class NavbarPage extends React.Component {
   state = {
@@ -22,7 +22,7 @@ class NavbarPage extends React.Component {
 
 
   render() {
-    
+
     return (
       <Navbar color="default-color" dark expand="md" style={{marginTop: "20px"}}>
           <NavbarBrand>
@@ -37,16 +37,6 @@ class NavbarPage extends React.Component {
                 <NavLink to="/Fortnite">Mon profil</NavLink>
               </NavItem>
               <NavItem>
-                <Dropdown>
-                  <DropdownToggle  nav caret>
-                    <div className="d-md-inline">Plateforme</div>
-                  </DropdownToggle>
-                  <DropdownMenu className="dropdown-default"right>
-                    <DropdownItem>PC</DropdownItem>
-                    <DropdownItem>PS4</DropdownItem>
-                    <DropdownItem>XBOX</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
               </NavItem>
               <NavItem>
                 <Dropdown>

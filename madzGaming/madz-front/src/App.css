@@ -38,7 +38,6 @@
 }
 
 
-
 /* -----------------------------------------------------------------------------
                                Background
 --------------------------------------------------------------------------------*/
@@ -51,17 +50,23 @@
   background-color: #ecf0f1;
 }
 .Background-landing{
-  background-image: url("./img/background-landing.jpg");
+  background-image: url("./Images/background-landing.jpg");
 }
 .Background-main{
   background-color: #DDE8EF;
 }
 
-
-
-
 /* -----------------------------------------------------------------------------
-                           LandingPage
+                             Form SignIn
+--------------------------------------------------------------------------------*/
+.Form-SignIn-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* -----------------------------------------------------------------------------
+                             LandingPage
 --------------------------------------------------------------------------------*/
 #LandingContainer{
   min-width: 100vw;

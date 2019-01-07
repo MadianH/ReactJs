@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
 
-import CardLanding from '../Components/CardLanding.js';
+import CardLanding from '../Components/Cards/CardLanding.js';
 import Margin from '../Components/Margin.js';
 import Navbar from '../Components/Navbar.js';
 
-import AtlasLogo from '../img/atlas-logo.jpg';
-import ArkLogo from '../img/ark-logo.jpg'
+import AtlasLogo from '../Images/atlas-logo.jpg';
+import ArkLogo from '../Images/ark-logo.jpg'
 
 const dataCardLanding = [
 {key: 1, name:"Atlas", background:AtlasLogo, link:"/Atlas"},
