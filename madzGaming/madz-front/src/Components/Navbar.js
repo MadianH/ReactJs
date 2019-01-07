@@ -8,35 +8,21 @@ import ModalForm, {FormPage} from './ModalForm.js'
 class NavbarPage extends React.Component {
   state = {
     isOpen: false,
-    ModalIsOpen: false,
   };
-
-  componentDidUpdate(prevProps){
-    if (this.props.PropsModalIsOpen.boolean!==this.state.ModalIsOpen) {
-
-    // console.log("did", this.props.PropsModalIsOpen.boolean);
-      this.setState({
-        modal: this.props.PropsModalIsOpen.boolean,
-      })
-    }
-  }
 
   toggleCollapse = () =>{
     this.setState({ isOpen: !this.state.isOpen });
   }
 
   toggleModalForm = () =>{
-    if (!this.state.ModalIsOpen){
+    if(!this.props.PropsModalIsOpen.boolean){
       this.props.ModalIsOpen();
-      this.setState({ ModalIsOpen: true });
     }
   }
 
 
-
   render() {
-    // console.log("state",this.state.ModalIsOpen);
-    // console.log("props", this.props.PropsModalIsOpen.boolean);
+    
     return (
       <Navbar color="default-color" dark expand="md" style={{marginTop: "20px"}}>
           <NavbarBrand>

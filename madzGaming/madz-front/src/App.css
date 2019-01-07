@@ -11,6 +11,9 @@
 .Font-color-white{
   color: #ffffff;
 }
+.Font-color-black{
+  color: black;
+}
 .Font-size-xxl{
   font-size: 40px;
 }
@@ -50,12 +53,10 @@
 .Background-landing{
   background-image: url("./img/background-landing.jpg");
 }
-.Background-main-fortnite{
+.Background-main{
   background-color: #DDE8EF;
 }
-.Background-atlas{
-  background-image: url("./img/atlas-background.jpg");
-}
+
 
 
 
@@ -72,7 +73,7 @@
   justify-content: center;
   align-items: center;
 }
-.LandingContent{
+.CardLandingContent{
   margin: 20px;
 }
 .img-game-landing{
@@ -89,9 +90,9 @@
 }
 
 /* -----------------------------------------------------------------------------
-                              FortniteScreen
+                               ArkScreen
 --------------------------------------------------------------------------------*/
-#FortniteScreen-container{
+#ArkScreen-container{
   width: 100vw;
   height: 100vh;
 }
@@ -102,8 +103,4 @@
 #AtlasScreen-container{
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
 import LandingPage from './Screens/LandingPage';
-import FortniteScreen from './Screens/FortniteScreen';
+import ArkScreen from './Screens/ArkScreen';
 import AtlasScreen from './Screens/AtlasScreen';
 
 import ModalFormReducer from './Reducers/ModalForm.reducer';
@@ -19,10 +19,10 @@ class App extends Component {
         <Provider store={store}>
           <div>
             <Route exact path="/" component={LandingPage}></Route>
-            <Route exact path="/Fortnite" component={FortniteScreen}></Route>
             <Route exact path="/Atlas" component={AtlasScreen}></Route>
+            <Route exact path="/Ark" component={ArkScreen}></Route>
           </div>
-        </Provider>  
+        </Provider>
       </Router>
     );
   }

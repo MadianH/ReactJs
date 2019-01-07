@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
 
 
-class FortniteScreen  extends Component {
+class ArkScreen  extends Component {
   render() {
 
     return (
-      <div id="FortniteScreen-container" className="Background-main-fortnite">
+      <div id="ArkScreen-container" className="Background-main">
 
         <div className="container">
           <div className="row">
-            <h1 className="text-center col-12">Fortnite</h1>
+            <h1 className="text-center col-12">Ark</h1>
           </div>
         </div>
 
@@ -20,4 +20,4 @@ class FortniteScreen  extends Component {
   }
 }
 
-export default FortniteScreen;
+export default ArkScreen;

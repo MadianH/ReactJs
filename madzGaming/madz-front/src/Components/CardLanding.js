@@ -11,7 +11,7 @@ class CardLanding  extends Component {
 
 
     return (
-      <div className="LandingContent">
+      <div className="CardLandingContent">
         <Link className="btn" to={this.props.link}>
           <img className="img-cent-pourcent img-game-landing" src={this.props.background} />
         </Link>

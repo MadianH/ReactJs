@@ -7,39 +7,49 @@ class ModalPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalIsOpen: false
+      value: '',
     };
+   this.handleChange = this.handleChange.bind(this);
+   this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate(prevProps){
-    if (this.props.PropsModalIsOpen.boolean!==this.state.modalIsOpen) {
-      this.setState({
-        modalIsOpen: !this.state.modalIsOpen
-      })
+  toggleModalForm = () =>{
+    if(this.props.PropsModalIsOpen.ModalFormReducer.boolean){
+      this.props.ModalIsOpen();
     }
   }
 
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    console.log("value",this.state.value);
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
   }
 
 
   render() {
-    console.log("props",this.props.PropsModalIsOpen.boolean);
-    console.log("state", this.state.modalIsOpen);
+
     return (
       <Container>
-        <Button onClick={this.toggle}>Modal</Button>
-        <Modal isOpen={this.state.modalIsOpen} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+        <Modal isOpen={this.props.PropsModalIsOpen.ModalFormReducer.boolean}>
           <ModalBody>
-
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                <div className="Font-color-black">Email:</div>
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <label>
+                <div className="Font-color-black">Password:</div>
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <input type="submit" value="Submit" />
+           </form>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Close</Button>{' '}
-            <Button color="primary">Save changes</Button>
+            <Button color="secondary" onClick={() => this.toggleModalForm()}>Close</Button>{' '}
           </ModalFooter>
         </Modal>
       </Container>
@@ -47,11 +57,21 @@ class ModalPage extends React.Component {
   }
 }
 
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    ModalIsOpen: function() {
+        dispatch( {type: 'CloseModal', boolean: false} )
+    }
+  }
+}
+
 function mapStateToProps(state) {
-  return { PropsModalIsOpen: state.ModalFormReducer }
+  return { PropsModalIsOpen: state }
 }
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(ModalPage);

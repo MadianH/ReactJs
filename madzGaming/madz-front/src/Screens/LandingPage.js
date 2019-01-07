@@ -7,15 +7,15 @@ import Margin from '../Components/Margin.js';
 import Navbar from '../Components/Navbar.js';
 
 import AtlasLogo from '../img/atlas-logo.jpg';
-import FortniteLogo from '../img/fortnite-logo.jpg';
+import ArkLogo from '../img/ark-logo.jpg'
 
 const dataCardLanding = [
-{name:"Fortnite",background:FortniteLogo, link:"/Fortnite"},
-{name:"Atlas",background:AtlasLogo, link:"/Atlas"},
+{key: 1, name:"Atlas", background:AtlasLogo, link:"/Atlas"},
+{key: 2, name:"Ark", background:ArkLogo, link:"/Ark"},
 ]
 
 let dataCardLandingList = dataCardLanding.map(function(map){
-  return <CardLanding name={map.name} background={map.background} link={map.link} />
+  return <CardLanding key={map.key} name={map.name} background={map.background} link={map.link} />
 })
 
 class LandingPage  extends Component {
@@ -29,7 +29,7 @@ class LandingPage  extends Component {
               <Margin size="Margin-xxl" />
               <h1 className="text-center Margin-null">Bienvenue sur Madz Gaming</h1>
               <Margin size="Margin-xxs" />
-              <h6 className="text-center Margin-null">Monte ta <strong>Team</strong>, <strong>Recrute</strong> des joueurs, Participe à des <strong>Tournois</strong></h6>
+              <h6 className="text-center Margin-null">Monte ta <strong>Team</strong>, <strong>Recrute</strong> des joueurs,<strong>Manage</strong> ton équipe, Participe à des <strong>Tournois</strong></h6>
               <Margin size="Margin-xxl" />
               <h4 className="text-center">Choisis ton jeu :</h4>
             </div>

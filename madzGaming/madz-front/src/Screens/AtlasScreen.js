@@ -7,8 +7,14 @@ class AtlasScreen  extends Component {
   render() {
 
     return (
-      <div id="AtlasScreen-container" className="Background-atlas Background-setting">
-        <span className="Font-color-white Font-size-xxl">En cours de développement...</span>
+      <div id="AtlasScreen-container" className="Background-main">
+
+        <div className="container">
+          <div className="row">
+            <h1 className="text-center col-12">Atlas</h1>
+          </div>
+        </div>
+
       </div>
     );
   }
