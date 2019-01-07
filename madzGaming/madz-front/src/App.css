@@ -14,6 +14,9 @@
 .Font-color-black{
   color: black;
 }
+.Font-bold{
+  font-weight: bold;
+}
 .Font-size-xxl{
   font-size: 40px;
 }
@@ -37,7 +40,13 @@
   margin: 30px;
 }
 
-
+/* -----------------------------------------------------------------------------
+                               Navbar
+--------------------------------------------------------------------------------*/
+.NavBar-btn-connection:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
 /* -----------------------------------------------------------------------------
                                Background
 --------------------------------------------------------------------------------*/
@@ -60,6 +69,16 @@
                              Form SignIn
 --------------------------------------------------------------------------------*/
 .Form-SignIn-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----------------------------------------------------------------------------
+                             Form SignUp
+--------------------------------------------------------------------------------*/
+.Form-SignUp-content{
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import FormSignIn from '../Forms/FormSignIn.js'
 
-class ModalPage extends React.Component {
+class ModalSignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class ModalPage extends React.Component {
   }
 
   toggleModalForm = () =>{
-    if(this.props.PropsModalIsOpen.ModalFormReducer.boolean){
+    if(this.props.PropsModalIsOpen.ModalSignIn.boolean){
       this.props.ModalIsOpen();
     }
   }
@@ -22,7 +22,7 @@ class ModalPage extends React.Component {
 
     return (
       <Container>
-        <Modal isOpen={this.props.PropsModalIsOpen.ModalFormReducer.boolean}>
+        <Modal isOpen={this.props.PropsModalIsOpen.ModalSignIn.boolean}>
           <ModalBody>
             <FormSignIn />
           </ModalBody>
@@ -40,7 +40,7 @@ class ModalPage extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     ModalIsOpen: function() {
-        dispatch( {type: 'CloseModal', boolean: false} )
+        dispatch( {type: 'CloseModalSignIn', boolean: false} )
     }
   }
 }
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ModalPage);
+)(ModalSignIn);

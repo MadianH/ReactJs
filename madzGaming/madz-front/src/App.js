@@ -6,11 +6,12 @@ import LandingPage from './Screens/LandingPage';
 import ArkScreen from './Screens/ArkScreen';
 import AtlasScreen from './Screens/AtlasScreen';
 
-import ModalFormReducer from './Reducers/ModalForm.reducer';
+import ModalSignIn from './Reducers/ModalSignIn.reducer';
+import ModalSignUp from './Reducers/ModalSignUp.reducer';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers}  from 'redux';
 
-const store = createStore(combineReducers({ModalFormReducer}));
+const store = createStore(combineReducers({ModalSignIn, ModalSignUp}));
 
 class App extends Component {
   render() {

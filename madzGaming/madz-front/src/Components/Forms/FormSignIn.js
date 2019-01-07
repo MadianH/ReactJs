@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../../App.css';
+
+import ModalSignUp from '../Modals/ModalSignUp.js'
 
 
 class FormSignIn  extends Component {
@@ -24,6 +27,12 @@ class FormSignIn  extends Component {
     alert('email =' + this.state.signInEmail + 'password =' + this.state.signInPassword);
   }
 
+  toggleModalForm = () =>{
+    if(!this.props.PropsModalIsOpen.boolean){
+      this.props.ModalIsOpen();
+    }
+  }
+
   render() {
 
 
@@ -45,10 +54,26 @@ class FormSignIn  extends Component {
 
           <input type="submit" value="Submit" />
        </form>
-       <div className="Font-color-black">Inscription</div>
+       <div onClick={() => this.toggleModalForm()} className="Font-color-black text-center btn-inscription">Inscription</div>
+       <ModalSignUp />
      </div>
     );
   }
 }
 
-export default FormSignIn;
+function mapStateToProps(state) {
+  return { PropsModalIsOpen: state.ModalSignUp }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    ModalIsOpen: function() {
+        dispatch( {type: 'OpenModalSignUp', boolean: true} )
+    }
+  }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FormSignIn);
