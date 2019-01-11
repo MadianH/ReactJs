@@ -3,7 +3,7 @@ import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collap
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import ModalSignIn, {FormPage} from '../Components/Modals/ModalSignIn.js'
+import ModalSign from '../Components/Modals/ModalSign.js'
 
 class NavbarPage extends React.Component {
   state = {
@@ -52,7 +52,7 @@ class NavbarPage extends React.Component {
             </NavbarNav>
             <NavbarNav right>
               <NavItem>
-              <ModalSignIn/>
+              <ModalSign/>
                 <div className="NavBar-btn-connection" onClick={() => this.toggleModalForm()}>Connection</div>
               </NavItem>
             </NavbarNav>

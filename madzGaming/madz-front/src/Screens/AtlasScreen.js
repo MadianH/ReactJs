@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 
 
+
 class AtlasScreen  extends Component {
   render() {
 
     return (
-      <div id="AtlasScreen-container" className="Background-main">
+      <div id="AtlasScreen-container" className="Background-main Full-screen">
 
         <div className="container">
           <div className="row">

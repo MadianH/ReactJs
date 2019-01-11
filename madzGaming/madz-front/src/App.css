@@ -1,28 +1,110 @@
-.Margin-null{
-  margin: 0;
-}
-
 /* -----------------------------------------------------------------------------
-                              Font
+                                  Font
 --------------------------------------------------------------------------------*/
-.text-center{
-  text-align: center;
-}
 .Font-color-white{
   color: #ffffff;
 }
 .Font-color-black{
   color: black;
 }
+.Font-color-red{
+  color: #c0392b;
+}
+.Font-color-pink{
+  color: #FF0F70;
+}
+.Font-colot-purple{
+  color: #6441A3;
+}
+.Font-color-green{
+  color: #4cd137;
+}
 .Font-bold{
   font-weight: bold;
+}
+.Font-size-xl{
+  font-size: 30px;
 }
 .Font-size-xxl{
   font-size: 40px;
 }
+
+.Underline{
+  text-decoration: underline #FF0F70;
+  text-underline-position: under;
+}
+
+/* -----------------------------------------------------------------------------
+                               Background
+--------------------------------------------------------------------------------*/
+.Background-setting{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Background-main{
+  background-color: #DDE8EF;
+}
+.Background-purple{
+  background-color: #6441A3;
+}
+.Background-pink{
+  background-color: #FF0F70;
+}
+.Background-white{
+  background-color: #ffffff;
+}
+.Background-landing{
+  background-image: url("./Images/background-landing.jpg");
+}
+.Full-screen{
+  min-width: 100vw;
+  min-height: 100vh;
+}
+/* -----------------------------------------------------------------------------
+                                  Width/Height
+--------------------------------------------------------------------------------*/
+.Width-full{
+  width: 100%;
+}
+
+.Height-xl{
+  height: 50vh;
+}
+
+/* -----------------------------------------------------------------------------
+                                   Flex
+--------------------------------------------------------------------------------*/
+.Text-center{
+  text-align: center;
+}
+.Flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.Flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.Justify-content-center{
+  justify-content: center;
+}
+.Justify-content-right{
+  justify-content: right;
+}
+.Justify-content-end{
+  justify-content: flex-end;
+}
+.Align-items-center{
+  align-items: center;
+}
+
 /* -----------------------------------------------------------------------------
                               Margin
 --------------------------------------------------------------------------------*/
+.Margin-null{
+  margin: 0;
+}
 .Container-margin{
   background-color: white;
   opacity: 0;
@@ -41,90 +123,64 @@
 }
 
 /* -----------------------------------------------------------------------------
-                               Navbar
+                                  Button
+--------------------------------------------------------------------------------*/
+.Btn-form{
+  height: 40px;
+}
+.Btn-no-sub {
+  cursor: not-allowed;
+  outline: none;
+}
+.Btn-no-sub:focus{
+  outline: none;
+}
+.Btn-ok-sub {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.Btn-ok-sub:active{
+  box-shadow: 0 2px #666;
+   transform: translateY(2px);
+}
+.Btn-block{
+   display: block;
+}
+
+/* -----------------------------------------------------------------------------
+                                 Navbar
 --------------------------------------------------------------------------------*/
 .NavBar-btn-connection:hover{
   font-weight: bold;
   cursor: pointer;
 }
-/* -----------------------------------------------------------------------------
-                               Background
---------------------------------------------------------------------------------*/
-.Background-setting{
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.Background-white{
-  background-color: #ecf0f1;
-}
-.Background-landing{
-  background-image: url("./Images/background-landing.jpg");
-}
-.Background-main{
-  background-color: #DDE8EF;
-}
 
 /* -----------------------------------------------------------------------------
-                             Form SignIn
+                                CardLanding
 --------------------------------------------------------------------------------*/
-.Form-SignIn-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* -----------------------------------------------------------------------------
-                             Form SignUp
---------------------------------------------------------------------------------*/
-.Form-SignUp-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-/* -----------------------------------------------------------------------------
-                             LandingPage
---------------------------------------------------------------------------------*/
-#LandingContainer{
-  min-width: 100vw;
-  min-height: 100vh;
-}
-#CardContainer{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.CardLandingContent{
-  margin: 20px;
-}
-.img-game-landing{
+.Img-game-landing{
   border: 1px solid #bdc3c7;
   -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
-.img-game-landing:hover{
+.Img-game-landing:hover{
   cursor: pointer;
   -webkit-transform: scale(1.3);
 	transform: scale(1.3);
 }
 
 /* -----------------------------------------------------------------------------
-                               ArkScreen
+                                SignForm
 --------------------------------------------------------------------------------*/
-#ArkScreen-container{
-  width: 100vw;
-  height: 100vh;
+.Sign-form-title{
+  padding: 20px 20px 40px;
 }
-
-/* -----------------------------------------------------------------------------
-                              AtlasScreen
---------------------------------------------------------------------------------*/
-#AtlasScreen-container{
-  width: 100vw;
-  height: 100vh;
+.Close:hover{
+  cursor: pointer;
+}
+.title-tab-form:hover{
+  cursor: pointer;
 }

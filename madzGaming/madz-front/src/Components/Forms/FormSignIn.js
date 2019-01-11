@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../../App.css';
 
-import ModalSignUp from '../Modals/ModalSignUp.js'
-
+import Button from '../Button.js';
+import Margin from '../Margin.js';
 
 class FormSignIn  extends Component {
   constructor(props) {
@@ -12,57 +12,71 @@ class FormSignIn  extends Component {
     this.state = {
       signInEmail: '',
       signInPassword: '',
+      readyToClick: false,
     };
    this.handleChange = this.handleChange.bind(this);
    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
+
     this.setState({
       [event.target.name]: event.target.value
     });
+
+    if(this.state.signInEmail.length > 1){
+      this.setState({
+        readyToClick: true
+      });
+    }
+    else if( this.state.signInEmail.length < 2){
+      this.setState({
+        readyToClick: false
+      });
+    }
+
   }
 
   handleSubmit(event) {
     alert('email =' + this.state.signInEmail + 'password =' + this.state.signInPassword);
   }
 
-  toggleModalForm = () =>{
-    if(!this.props.PropsModalIsOpen.boolean){
-      this.props.ModalIsOpen();
-    }
-  }
 
   render() {
 
-
-
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="Form-SignIn-content">
-          <div className="Font-color-black">Connecte toi !</div>
+        <form onSubmit={this.handleSubmit} className="Flex-column Justify-content-center Align-items-center">
 
-          <label>
-            <div className="Font-color-black">Email:</div>
-            <input className="inputFormSignIn" type="email" name="signInEmail" onChange={this.handleChange}/>
+          <Margin size="Margin-xl"/>
+          <label className="Width-full">
+            <div className="Font-color-black Font-bold">Email:</div>
+            <input className="Width-full Input-setting" type="email" name="signInEmail" onChange={this.handleChange}/>
           </label>
 
-          <label>
-            <div className="Font-color-black">Password:</div>
-              <input className="inputFormSignIn" type="password" name="signInPassword" onChange={this.handleChange}/>
+          <Margin size="Margin-xs"/>
+
+          <label className="Width-full">
+            <div className="Font-color-black Font-bold">Password:</div>
+              <input className="Width-full" type="password" name="signInPassword" autocomplete="new-password" onChange={this.handleChange}/>
           </label>
 
-          <input type="submit" value="Submit" />
+          <Margin size="Margin-xl"/>
+
+          {this.state.readyToClick ? (
+            <input type="submit" value="Se connecter" className="Btn-form Width-full Btn-ok-sub Background-pink Font-color-white" />
+            ) : (
+            <Button type="button" class="Btn-no-sub Btn-block Btn-form Width-full Background-pink Font-color-white" content="Se connecter"/>
+            )
+          }
        </form>
-       <div onClick={() => this.toggleModalForm()} className="Font-color-black text-center btn-inscription">Inscription</div>
-       <ModalSignUp />
      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { PropsModalIsOpen: state.ModalSignUp }
+  return { PropsModalIsOpen: state }
 }
 
 function mapDispatchToProps(dispatch) {

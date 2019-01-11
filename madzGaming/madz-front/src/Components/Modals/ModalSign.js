@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
 import {connect} from 'react-redux';
 
-import FormSignIn from '../Forms/FormSignIn.js'
+import TabForm from '../Tabs/TabForm.js'
 
-class ModalSignIn extends React.Component {
+class ModalSign extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,13 +22,13 @@ class ModalSignIn extends React.Component {
 
     return (
       <Container>
-        <Modal isOpen={this.props.PropsModalIsOpen.ModalSignIn.boolean}>
-          <ModalBody>
-            <FormSignIn />
+        <Modal isOpen={this.props.PropsModalIsOpen.ModalSignIn.boolean} centered>
+          <ModalBody id="ModalForm">
+            <div className="Flex-row Justify-content-end">
+              <span className="Font-color-black Font-bold Close" onClick={() => this.toggleModalForm()}>X</span>
+            </div>
+            <TabForm />
           </ModalBody>
-          <ModalFooter>
-            <Button color="secondary" onClick={() => this.toggleModalForm()}>Close</Button>{' '}
-          </ModalFooter>
         </Modal>
       </Container>
     );
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ModalSignIn);
+)(ModalSign);

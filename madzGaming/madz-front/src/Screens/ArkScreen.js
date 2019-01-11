@@ -7,7 +7,7 @@ class ArkScreen  extends Component {
   render() {
 
     return (
-      <div id="ArkScreen-container" className="Background-main">
+      <div id="ArkScreen-container" className="Background-main Full-screen">
 
         <div className="container">
           <div className="row">

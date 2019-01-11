@@ -20,20 +20,20 @@ let dataCardLandingList = dataCardLanding.map(function(map){
 class LandingPage  extends Component {
   render() {
     return (
-      <div id="LandingContainer" className="Background-landing Font-color-white">
+      <div id="LandingContainer" className="Background-landing Font-color-white Full-screen">
         <Navbar />
         <div className="container-fluid">
           <div className="row">
             <div className="col-12">
               <Margin size="Margin-xxl" />
-              <h1 className="text-center Margin-null">Bienvenue sur Madz Gaming</h1>
+              <h1 className="text-center Margin-null">Bienvenue sur Madz Company</h1>
               <Margin size="Margin-xxs" />
-              <h6 className="text-center Margin-null">Monte ta <strong>Team</strong>, <strong>Recrute</strong> des joueurs,<strong>Manage</strong> ton équipe, Participe à des <strong>Tournois</strong></h6>
+              <h6 className="text-center Margin-null">Monte ta <strong>Guilde</strong>, <strong>Recrute</strong> des joueurs, <strong>Manage</strong> ton équipe, Monte ta <strong>Réputation</strong></h6>
               <Margin size="Margin-xxl" />
               <h4 className="text-center">Choisis ton jeu :</h4>
             </div>
             <Margin size="Margin-xxl" />
-            <div id="CardContainer" className="col-12 row">
+            <div id="CardContainer" className="col-12 row Flex-row Justify-content-center Align-items-center">
               {dataCardLandingList}
             </div>
           </div>
