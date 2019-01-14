@@ -1,4 +1,4 @@
-.game-memory > .card {
+.card {
   font-size: 2em;
   flex: 1 1 calc(100% / 6 - 0.4em);
   outline: 0.08em solid silver;
@@ -7,22 +7,22 @@
   cursor: default;
 }
 
-.game-memory > .card.hidden {
+.card.hidden {
   background: silver;
 }
 
-.game-memory > .card.justMatched,
-.memory > .card.justMismatched {
+.card.justMatched,
+.card.justMismatched {
   outline: 0.1em solid green;
 }
-.game-memory > .card.justMismatched {
+.card.justMismatched {
   outline-color: red;
 }
 
-.game-memory > .card.visible {
+.card.visible {
   cursor: not-allowed;
 }
 
-.game-memory > .card > .symbol {
+.card > .symbol {
   margin: auto;
 }
