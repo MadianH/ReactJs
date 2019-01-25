@@ -7,13 +7,13 @@ import ArkScreen from './Screens/ArkScreen';
 import AtlasScreen from './Screens/AtlasScreen';
 
 import ModalSignIn from './Reducers/ModalSignIn.reducer';
-
+import DataUser from './Reducers/DataUser.reducer';
 import TabForm from './Reducers/TabForm.reducer';
 
 import {Provider} from 'react-redux';
 import {createStore, combineReducers}  from 'redux';
 
-const store = createStore(combineReducers({ModalSignIn, TabForm}));
+const store = createStore(combineReducers({ModalSignIn, TabForm, DataUser}));
 
 class App extends Component {
   render() {

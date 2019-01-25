@@ -13,6 +13,7 @@ class FormSignIn  extends Component {
       signInEmail: '',
       signInPassword: '',
       readyToClick: false,
+      accountError: false,
     };
    this.handleChange = this.handleChange.bind(this);
    this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +39,29 @@ class FormSignIn  extends Component {
   }
 
   handleSubmit(event) {
-    alert('email =' + this.state.signInEmail + 'password =' + this.state.signInPassword);
+    // alert('email =' + this.state.signInEmail + 'password =' + this.state.signInPassword);
+
+    var ctx = this;
+    fetch("http://127.0.0.1:3000/signin", {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body:"email=" + ctx.state.signInEmail + "&password=" + ctx.state.signInPassword
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("djdjdjdd",data);
+        if(data.users.length === 0){
+          this.setState({
+            accountError: true
+          });
+        }
+        else{
+          this.props.DataUser(data)
+          this.props.CloseModal()
+        }
+      })
+      .catch((error) => console.log("request failed :", error))
+    event.preventDefault();
   }
 
 
@@ -47,6 +70,12 @@ class FormSignIn  extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="Flex-column Justify-content-center Align-items-center">
+          {this.state.accountError ? (
+            <div>email ou password invalide</div>
+          ) : (
+            <div></div>
+          )
+          }
 
           <Margin size="Margin-xl"/>
           <label className="Width-full">
@@ -58,7 +87,7 @@ class FormSignIn  extends Component {
 
           <label className="Width-full">
             <div className="Font-color-black Font-bold">Password:</div>
-              <input className="Width-full" type="password" name="signInPassword" autocomplete="new-password" onChange={this.handleChange}/>
+              <input className="Width-full" type="password" name="signInPassword"  onChange={this.handleChange}/>
           </label>
 
           <Margin size="Margin-xl"/>
@@ -81,8 +110,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    ModalIsOpen: function() {
-        dispatch( {type: 'OpenModalSignUp', boolean: true} )
+    CloseModal: function() {
+        dispatch( {type: 'CloseModalSignIn', boolean: false} )
+    },
+    DataUser: function(user){
+      dispatch( {type: 'UserData', DataUser: user} )
     }
   }
 }
