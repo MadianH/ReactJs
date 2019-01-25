@@ -1,8 +1,14 @@
 table { background-color: blue }
 td {
-    background-color: white;
-    border-radius: 50px;
-    width: 50px; height: 50px;
+  border-radius: 50px;
+  width: 50px; height: 50px;
 }
-.joueur1 { background-color: red; }
-.joueur2 { background-color: yellow; }
+.vide{
+  background-color: white;
+}
+.joueur1 {
+  background-color: red;
+}
+.joueur2 {
+  background-color: yellow;
+}

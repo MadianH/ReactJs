@@ -26,13 +26,11 @@ class Plateau extends Component {
    }
 
 
-   componentDidMount(){
-    this.props.Reducer(this.state.turn)
-   }
+   play = (columnIndex) => {
 
-   play(columnIndex) {
-        for (var r = 0; r < this.props.height; r++) {
+        for (var r = 0; r < this.props.row; r++) {
             if (this.state.plateau[r][columnIndex] == 0) {
+              console.log(this.state.plateau[r][columnIndex]);
                 // On construit une copie (deep copy) de la variable `plateau`.
                 // Cette façon de copier est correcte car on sait qu'il s'agit
                 // d'une liste de listes.
@@ -43,16 +41,18 @@ class Plateau extends Component {
                 newPlateau[r][columnIndex] = this.state.turn
                 this.setState({
                   plateau: newPlateau,
-                   turn: 3 - this.state.turn,
+                  turn: 3 - this.state.turn,
                });
-               return r;
+               // console.log(r);
+               // return r;
            }
        }
-       return false;
+       // return false;
    }
 
 
   render() {
+
     var handleClick = this.play
     var rowList = this.state.plateau.map(function(row, index){
       return <Row key={index} row={row} rowIndex={index} handleClick={handleClick} />
@@ -72,19 +72,22 @@ Plateau.defaultProps = {
   col: 7,
   };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    Reducer: function(turn) {
-        dispatch( {type: 'currentTurn', currentTurn: turn} )
-    }
-  }
-}
+export default Plateau;
 
-function mapStateToProps(props) {
-  return { newTurn: props.TurnReduceur, colIndex: props.IndexReduceur }
-}
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Plateau);
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     Reducer: function(turn) {
+//         dispatch( {type: 'currentTurn', currentTurn: turn} )
+//     }
+//   }
+// }
+//
+// function mapStateToProps(props) {
+//   return { newTurn: props.TurnReduceur, colIndex: props.IndexReduceur }
+// }
+//
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(Plateau);
