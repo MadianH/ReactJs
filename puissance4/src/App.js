@@ -5,12 +5,13 @@ import './App.css';
 
 import Plateau from './Components/Plateau.js'
 
-import ReducPlateau from './Reducers/Plateau.reduceur';
+import TurnReduceur from './Reducers/Turn.reduceur';
+import IndexReduceur from './Reducers/Index.reduceur';
 
 import {Provider} from 'react-redux';
 import {createStore, combineReducers}  from 'redux';
 
-const store = createStore(combineReducers({ReducPlateau}));
+const store = createStore(combineReducers({TurnReduceur, IndexReduceur}));
 
 
 

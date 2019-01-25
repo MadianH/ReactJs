@@ -4,29 +4,58 @@ import {connect} from 'react-redux';
 
 import Row from './Row.js'
 
+var initPlateau = (row, col) =>{
+  let plateau = []
+  for (var r = 0; r < row; r++) {
+    plateau[r] = [];
+    for (var c = 0; c < col; c++) {
+      plateau[r][c] = 0;
+    }
+  }
+  return plateau
+}
+
+
 class Plateau extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      plateau: [],
-      row: 6,
-      col: 7,
+      plateau: initPlateau(this.props.row, this.props.col),
+      turn: 1,
      };
-  }
-
-  componentWillMount(){
-    for (var l = 0; l< this.state.row; l++) {
-      this.state.plateau[l] = [];
-      for (var c = 0; c < this.state.col; c++) {
-        this.state.plateau[l][c] = 0;
-      }
-    }
-    this.props.Reducer(this.state.plateau)
    }
 
+
+   componentDidMount(){
+    this.props.Reducer(this.state.turn)
+   }
+
+   play(columnIndex) {
+        for (var r = 0; r < this.props.height; r++) {
+            if (this.state.plateau[r][columnIndex] == 0) {
+                // On construit une copie (deep copy) de la variable `plateau`.
+                // Cette façon de copier est correcte car on sait qu'il s'agit
+                // d'une liste de listes.
+                var newPlateau = this.state.plateau.map(function (x) {
+                    return x.slice();
+                });
+                // On met à jour l'état.
+                newPlateau[r][columnIndex] = this.state.turn
+                this.setState({
+                  plateau: newPlateau,
+                   turn: 3 - this.state.turn,
+               });
+               return r;
+           }
+       }
+       return false;
+   }
+
+
   render() {
+    var handleClick = this.play
     var rowList = this.state.plateau.map(function(row, index){
-      return <Row key={index} row={row} rowIndex={index} />
+      return <Row key={index} row={row} rowIndex={index} handleClick={handleClick} />
     })
     return (
      <table className="Plateau">
@@ -38,16 +67,21 @@ class Plateau extends Component {
   }
 }
 
+Plateau.defaultProps = {
+  row: 6,
+  col: 7,
+  };
+
 function mapDispatchToProps(dispatch) {
   return {
-    Reducer: function(plateau) {
-        dispatch( {type: 'DataPlateau', DataPlateau: plateau } )
+    Reducer: function(turn) {
+        dispatch( {type: 'currentTurn', currentTurn: turn} )
     }
   }
 }
 
 function mapStateToProps(props) {
-  return { DataReducer: props }
+  return { newTurn: props.TurnReduceur, colIndex: props.IndexReduceur }
 }
 
 export default connect(
