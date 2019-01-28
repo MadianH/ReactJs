@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+Le Puissance 4 que j'ai créé est une application Reactjs tour par tour en local. Elle est bootstrapper avec [Create React App](https://github.com/facebook/create-react-app) et utilise [React-Redux](https://github.com/reduxjs/react-redux)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+**Pourquoi le composant Board ?**
 
-### `npm test`
+Board est le plateau du jeu, de ce composant en découle toute la mécanique.
+Il permet d'en faire l'élément central de l'application, y placer toutes les mécaniques du jeu et faire appel aux autres composants cruciaux d'un puissance 4 (lignes et jetons).
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Pourquoi le composant Row ?**
 
-### `npm run build`
+Le composant Row simule les lignes du jeu.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Pourquoi une class et non une fonction ?
+Car les Rows ont besoin de transmettre et stocker des informations dans le temps, ce qu'une fonction ne fait pas.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+**Pourquoi le composant Token ?**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Le composant Token simule les trous vides du plateau ainsi que les jetons.
 
-### `npm run eject`
+**Pourquoi le composant Header ?**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Le Header sert de tableau de bord pour les joueurs, il indique : à qui est le tour de jouer, le potentiel gagnant, le tableau des victoires en fin de partie. Il informe également des éventuelles erreurs de requêtes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Pourquoi utiliser le fetch ?**
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Si un joueur remporte une partie, une requête `POST` est envoyée pour enregistrer la victoire du joueur en base de donnée et un tableau nous est renvoyé contenant le tableau des victoires.
+La méthode `POST` est utilisée lors du fetch car le tableau évolue à chaque victoire. Cela évite d'éventuelles erreurs dûes à la mise en cache de la méthode `GET`.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+**Pourquoi faire passer des Props du composant Board à ses enfants Row et Token sans passer par Redux?**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Passer par Redux pour la transmission de ces informations est moins avantageux pour 3 raisons :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1.Board a besoin de faire appel au composant Row pour se dessiner, et ce-dernier fait de même avec Token. Profiter de ces appels pour transmettre les props est simple et rapide. Créer un reduceur pour chacune de ces actions est à mes yeux peu bénéfique.
 
-### Code Splitting
+2.Board a besoin de connaître le rowIndex de ses enfants Row et le ColIndex de ses petits enfants  Token. La transmission de ces informations de parents à enfants puis d'enfants à parents via Redux est beaucoup plus long à mettre en place et moins stable.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+3.Token a besoin  d'actionner la fonction game() de son parent Board à chaque fois qu'il est cliqué. Il est beaucoup plus rapide de donner l'accès à cette fonction directement via les props.
+Pour mettre en place cette action via redux il aurait fallu mettre en place une fonction componentDidUpdate(prevProps) au composant Board et lui administrer un reduceur partagé par Token et Board.
 
-### Analyzing the Bundle Size
+**l'Application à deux états redux**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Ces états sont sous redux car ils sont partagés par plusieurs composants qui ne sont pas tous parents. Passer par redux dans ce cas présent est beaucoup plus simple que de faire remonter puis redescendre des informations de composant en composant.
 
-### Making a Progressive Web App
+  - [currentPlayer]: Il indique à qui est le tour de jouer. Il s'initialise à 1 et switch entre 1 et 2 lorsque les joueurs jouent. La mécanique s'opère au sein du fichier reduceur. Cet état est partagé avec les composants Header,Board et Token.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+  - [win]: est un object qui a deux propriétés :
+winning : qui s'initialise à false et passe à true si un joueur aligne 4 jetons.
+winner : qui s'initialise en chaîne de caractère vide. Si winning passe à true le nom du vainqueur est déversé dans winner. Cet état est partagé par les composants Header et Token, et Board actionne le reduceur.
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+**Fonctions présentes:**
 
-### Deployment
+##Board à 3 fonctions =
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+  - initBoard () = cette fonction prend en paramètre les props [row] et [col] et itère sur ces
+  valeurs, ce qui donne un tableau contenant 6 tableaux qui eux-mêmes contiennent 7 colones dont la valeur est initisalisée à 0.
 
-### `npm run build` fails to minify
+Tabeau return par initBoard :
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0]
+[0,0,0,0,0,0,0]
+
+  - game () = cette fonction prend en paramètre l'index de la colone cliquée et itère sur la colone renseignée dans le paramètre jusqu'à trouver la valeur 0. Elle remplace ensuite la valeur 0 par celle de l'état [currentPlayer] avant de mettre à jour l'état [board] avec la nouvelle valeur, elle appelle la fonction searchWin() et enfin actionne le mécanisme du reduceur currentPlayer.
+
+
+  - searchWin()  = cette fonction itère sur le plateau. Un compteur est initialisé à zéro.
+  A chaque récurrence, le compteur prend 1. Si le compteur arrive à 4, c'est que 4 jetons sont alignés. La fonction envoie à l'état redux [win] la valeur qu'elle a retrouvé.
+
+
+##Token a 1 fonction =
+
+  - handleClick() = qui fait appel à la fonction game() transmise en props depuis le composant Board.

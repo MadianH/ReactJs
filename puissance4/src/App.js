@@ -1,30 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
+import Board from './Components/Board'
+import Header from './Components/Header'
 
-import Plateau from './Components/Plateau.js'
-
-import TurnReduceur from './Reducers/Turn.reduceur';
-import IndexReduceur from './Reducers/Index.reduceur';
+import CurrentPlayer from './Reducers/CurrentPlayer.reduceur';
+import Win from './Reducers/Win.reduceur';
 
 import {Provider} from 'react-redux';
-import {createStore, combineReducers}  from 'redux';
+import {createStore, combineReducers} from 'redux';
 
-const store = createStore(combineReducers({TurnReduceur, IndexReduceur}));
-
-
+const store = createStore(combineReducers({CurrentPlayer, Win}));
 
 class App extends Component {
 
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <Plateau />
+        <div id="app">
+          <Header/>
+          <Board/>
         </div>
-      </Provider>
-    );
+      </Provider>);
   }
 }
 

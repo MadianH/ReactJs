@@ -1,35 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../App.css';
-import {connect} from 'react-redux';
 
-import Jeton from './Jeton.js'
-
+import Token from './Token'
 
 class Row extends Component {
-  render(){
-    var handleClick = this.props.handleClick;
-    var JetonList = this.props.row.map(function(row, index) {
-      return <Jeton key={index} colIndex={index} handleClick={handleClick} row={row}/>
+
+  render() {
+    let tokenList = this.props.row.map((row, index) => {
+      return <Token key={index} colIndex={index} handleClick={this.props.handleClick} row={row}/>
     })
-    return (<tr>{JetonList}</tr>)
+    return (<tr>{tokenList}</tr>)
   }
 }
 
 export default Row;
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     Reducer: function(plateau) {
-//         dispatch( {type: 'DataPlateau', DataPlateau: plateau } )
-//     }
-//   }
-// }
-//
-// function mapStateToProps(props) {
-//   return { DataReducer: props.ReducPlateau }
-// }
-//
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(Row);
