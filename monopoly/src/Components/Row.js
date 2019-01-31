@@ -15,14 +15,10 @@ class Row extends Component {
 
   render() {
     let rowClass = [""]
-    if(this.props.index === 0) {
-      rowClass.push("top width-hp")
-    } else if (this.props.index === 1) {
-      rowClass.push("right")
-    } else if (this.props.index === 2) {
-      rowClass.push("bottom width-hp")
-    } else if (this.props.index === 3) {
-      rowClass.push("left")
+    if(this.props.index === 0 || this.props.index === 2) {
+      rowClass.push("row-top-bottom flex flex-row")
+    } else if (this.props.index === 1 || this.props.index === 3) {
+      rowClass.push("row-right-left flex flex-column")
     }
     let squareList = this.props.row.map((square, index) => {
       return <Square key={index} square={square} rowIndex={this.props.index}/>

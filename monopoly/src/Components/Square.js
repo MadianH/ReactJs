@@ -13,21 +13,21 @@ class Square extends Component {
 
 
   render() {
-    let classSquare = ""
+    let classSquare = ["square"]
     if(this.props.rowIndex === 0 || this.props.rowIndex === 2) {
       if(this.props.square[0] === 0 || this.props.square[0] === 9){
-        classSquare = "square-corner"
+        classSquare.push("square-corner")
       } else {
-        classSquare = "square-top-bottom"
+        classSquare.push("square-top-bottom")
       }
     } else if(this.props.rowIndex === 1) {
-      classSquare = "square-right"
+      classSquare.push("square-right")
     } else if(this.props.rowIndex === 3){
-      classSquare = "square-left"
+      classSquare.push("square-left")
     }
 
     return (
-      <div className={classSquare}>{this.props.square[0]}</div>
+      <div className={classSquare.join(" ")}>{this.props.square[0]}</div>
    );
   }
 }

@@ -36,7 +36,7 @@ class Board extends Component {
     return(
       <div className="board">
         <Row row={this.state.board[0]} index={0}/>
-        <div className="middleBoard">
+        <div className="middleBoard flex flex-row justify-spaceBetween">
           <Row row={this.state.board[3]} index={3}/>
           <div className="dashboard"></div>
           <Row row={this.state.board[1]} index={1}/>
