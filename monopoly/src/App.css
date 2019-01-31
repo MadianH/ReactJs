@@ -1,0 +1,55 @@
+.board{
+  width: 1200px;
+  height: 1200px;
+}
+
+.middleBoard{
+  width: 100%;
+  height: 72%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  height: 14%;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  height: 14%;
+}
+.left{
+  display: flex;
+  flex-direction: column;
+  width: 14%;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  width: 14%;
+}
+
+.width-hp{
+  width: 100%;
+}
+
+.dashboard{
+  width: 72%;
+}
+
+.square-right{
+  height: 12.5%;
+}
+.square-left{
+  height: 12.5%;
+}
+
+.square-corner{
+  width: 14%;
+}
+.square-top-bottom{
+  width: 9%;
+}
