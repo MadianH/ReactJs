@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import '../App.css';
 
 import Row from './Row'
-
+import Dashboard from './Dashboard'
 
 const initBoard = () => {
   let row = 4;
@@ -38,7 +38,7 @@ class Board extends Component {
         <Row row={this.state.board[0]} index={0}/>
         <div className="middleBoard flex flex-row justify-spaceBetween">
           <Row row={this.state.board[3]} index={3}/>
-          <div className="dashboard"></div>
+          <div className="dashboard"><Dashboard /></div>
           <Row row={this.state.board[1]} index={1}/>
         </div>
         <Row row={this.state.board[2]} index={2}/>

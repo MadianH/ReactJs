@@ -13,8 +13,11 @@ class Dice extends Component {
     };
   }
 
-  throwing = getRandomInt(max) => {
-    let newResult = Math.floor(Math.random() * Math.floor(max));
+  throwing = (min, max) => {
+    let newResult;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    newResult = Math.floor(Math.random() * (max - min)) + min;
     this.setState({
       trow: true,
       result: newResult
@@ -26,7 +29,7 @@ class Dice extends Component {
     return (
       <div className="">
         {this.state.result}
-        <button onClick={() => this.throwing(12)}>random</button>
+        <Button link={false} type={"button"} content={"Lancer les dés"} parent={"Dice"} handleClick={this.throwing} />
       </div>
    );
   }

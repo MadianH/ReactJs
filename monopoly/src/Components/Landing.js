@@ -24,7 +24,7 @@ class Landing extends Component {
 
   render() {
     let nbPlayerButton = nbPlayer.map((player, index) => {
-      return <Button key={index} index={index} link={false} type={"button"} content={player} handleClick={this.handleClick}/>
+      return <Button key={index} index={index} link={false} type={"button"} content={player} parent={"Landing"} handleClick={this.handleClick} />
     })
     return (
       <div id="landing">

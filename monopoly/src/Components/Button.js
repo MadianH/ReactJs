@@ -4,7 +4,16 @@ import '../App.css';
 
 class Button extends Component {
 
-  
+  handleClick = () => {
+    if(this.props.parent === "Landing") {
+      this.props.handleClick(this.props.index)
+    } else if(this.props.parent === "Form") {
+      this.props.handleSubmit()
+    } else if( this.props.parent === "Dice") {
+      this.props.handleClick(2, 12)
+    }
+  }
+
   render() {
 
     return (
@@ -17,7 +26,7 @@ class Button extends Component {
               </Link>
             )
             : (
-              <button type={this.props.type} className={this.props.className} onClick={() => this.props.handleClick(this.props.index)}>{this.props.content}</button>
+              <button type={this.props.type} className={this.props.className} onClick={() => this.handleClick()}>{this.props.content}</button>
             )
         }
       </div>

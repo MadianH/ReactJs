@@ -29,7 +29,7 @@ class Form extends Component {
   handleSubmit(event) {
     let stateMirror = []
     let players = []
-
+    console.log("ok");
     for(var property in this.state){
       stateMirror.push(this.state[property])
     }
@@ -59,7 +59,8 @@ class Form extends Component {
       <form className="">
         {inputList}
       </form>
-      <Link to="/Board"><button type="button" onClick={() => this.handleSubmit()}>sbjsbd</button></Link>
+
+      <Link to="/Board"><Button link={false} type={"button"} content={"Valider"} parent={"Form"} handleSubmit={this.handleSubmit} /></Link>
       </div>
    );
   }
