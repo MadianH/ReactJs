@@ -59,7 +59,7 @@ winner : qui s'initialise en chaîne de caractère vide. Si winning passe à tru
   - initBoard () = cette fonction prend en paramètre les props [row] et [col] et itère sur ces
   valeurs, ce qui donne un tableau contenant 6 tableaux qui eux-mêmes contiennent 7 colones dont la valeur est initisalisée à 0.
 
-Tabeau return par initBoard :
+Tableau return par initBoard :
 
 [0,0,0,0,0,0,0]
 [0,0,0,0,0,0,0]

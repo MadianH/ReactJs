@@ -62,11 +62,12 @@ class NavbarPage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
+  console.log("reduc",state);
   return { PropsModalIsOpen: state.ModalSignIn }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     ModalIsOpen: function() {
         dispatch( {type: 'OpenModalSignIn', boolean: true} )
