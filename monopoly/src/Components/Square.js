@@ -15,7 +15,7 @@ class Square extends Component {
   render() {
     let classSquare = ["square"]
     if(this.props.rowIndex === 0 || this.props.rowIndex === 2) {
-      if(this.props.square[0] === 0 || this.props.square[0] === 9){
+      if(this.props.index === 0 || this.props.index === 9){
         classSquare.push("square-corner")
       } else {
         classSquare.push("square-top-bottom")
@@ -27,7 +27,10 @@ class Square extends Component {
     }
 
     return (
-      <div className={classSquare.join(" ")}>{this.props.square[0]}</div>
+      <div className={classSquare.join(" ")}>
+        {this.props.index}
+        {this.props.square.join(" ")}
+      </div>
    );
   }
 }

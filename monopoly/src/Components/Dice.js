@@ -5,34 +5,40 @@ import '../App.css';
 import Button from './Button'
 
 class Dice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      throw: false,
-      result: null,
-    };
-  }
 
   throwing = (min, max) => {
     let newResult;
     min = Math.ceil(min);
     max = Math.floor(max);
     newResult = Math.floor(Math.random() * (max - min)) + min;
-    this.setState({
-      trow: true,
-      result: newResult
-    })
+    this.props.ReduceurDice(newResult)
+    this.props.ReduceurCurrentPlayer()
   }
 
   render() {
 
     return (
       <div className="">
-        {this.state.result}
+        {this.props.dice}
         <Button link={false} type={"button"} content={"Lancer les dés"} parent={"Dice"} handleClick={this.throwing} />
       </div>
    );
   }
 }
 
-export default Dice;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ReduceurDice: function(result) {
+      dispatch({type: 'throwing', result: result})
+    },
+    ReduceurCurrentPlayer: function() {
+      dispatch({type: 'newCurrentPlayer'})
+    }
+  }
+}
+
+const mapStateToProps = (props) => {
+  return {dice: props.Dice}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dice);

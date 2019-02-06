@@ -7,10 +7,11 @@ import Board from './Components/Board';
 
 import Players from './Reduceurs/Players.reduceur';
 import CurrentPlayer from './Reduceurs/CurrentPlayer.reduceur';
+import Dice from './Reduceurs/Dice.reduceur';
 
 import {Provider} from 'react-redux';
 import {createStore, combineReducers}  from 'redux';
-const store = createStore(combineReducers({Players, CurrentPlayer}))
+const store = createStore(combineReducers({Players, CurrentPlayer, Dice}))
 
 class App extends Component {
   render() {

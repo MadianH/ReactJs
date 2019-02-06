@@ -18,7 +18,7 @@ class Landing extends Component {
   }
 
   handleClick = (index) => {
-    this.props.ReduceurPlayers(index + 2)
+    this.props.ReduceurCurrentPlayer(index + 2)
     this.setState({step: true})
   }
 
@@ -32,7 +32,7 @@ class Landing extends Component {
           ?(
             <div>
               <h3>Entrez vos prénoms :</h3>
-              <Form />
+              <Form/>
             </div>
           )
           :(
@@ -50,9 +50,9 @@ class Landing extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ReduceurPlayers: function(nbPlayer) {
+    ReduceurCurrentPlayer: function(nbPlayer) {
       dispatch({type: 'nbPlayer', nbPlayer: nbPlayer})
-    }
+    },
   }
 }
 

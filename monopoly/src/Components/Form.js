@@ -29,7 +29,6 @@ class Form extends Component {
   handleSubmit(event) {
     let stateMirror = []
     let players = []
-    console.log("ok");
     for(var property in this.state){
       stateMirror.push(this.state[property])
     }
@@ -70,13 +69,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     ReduceurPlayers: function(players) {
       dispatch({type: 'newPlayers', players: players})
-    }
+    },
   }
 }
 
 const mapStateToProps = (props) => {
-
-  return {nbPlayer: props.Players.nbPlayer}
+  return {nbPlayer: props.CurrentPlayer.nbPlayer}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

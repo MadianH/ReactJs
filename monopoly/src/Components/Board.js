@@ -5,10 +5,11 @@ import '../App.css';
 import Row from './Row'
 import Dashboard from './Dashboard'
 
-const initBoard = () => {
+const initBoard = (players) => {
   let row = 4;
   let square;
   let board = []
+  let nbPlayers = players.length
   for(let r = 0; r < row; r++){
     board[r] = []
     if(r === 0 || r === 2){
@@ -17,7 +18,12 @@ const initBoard = () => {
       square = 9
     }
     for(let s = 0; s < square; s++){
-      board[r][s] = [s]
+      board[r][s] = []
+      if(r === 2 && s === 9) {
+        for(let p = 0; p < nbPlayers; p++) {
+          board[r][s].push(`p${p+1}`)
+        }
+      }
     }
   }
   return board
@@ -27,12 +33,27 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: initBoard()
+      board: initBoard(this.props.players)
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.dice != prevProps.dice) {
+      let result = this.props.dice
+      let newBoard = [...this.state.board]
+
+
+        for(let r = 0; r < 4; r++) {
+          for(let s = 0; s < newBoard[r].length; s++) {
+            console.log(newBoard[r][s].length);
+
+          }
+        }
+
+    }
+  }
+
   render() {
-    console.log(this.state.board);
     return(
       <div className="board">
         <Row row={this.state.board[0]} index={0}/>
@@ -58,7 +79,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (props) => {
-  return {}
+  return {
+    players: props.Players.players,
+    dice: props.Dice,
+    currentPlayer: props.CurrentPlayer.currentPlayer
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

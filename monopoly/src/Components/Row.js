@@ -21,7 +21,7 @@ class Row extends Component {
       rowClass.push("row-right-left flex flex-column")
     }
     let squareList = this.props.row.map((square, index) => {
-      return <Square key={index} square={square} rowIndex={this.props.index}/>
+      return <Square key={index} square={square} index={index} rowIndex={this.props.index}/>
     })
     return (
       <div className={rowClass.join(" ")}>{squareList}</div>
