@@ -1,3 +1,5 @@
+# ExpressJs
+
 ### Construire un serveur web Express
 
 
@@ -25,3 +27,10 @@ Lancer le serveur
     npm start    
 Afficher une page
 http://localhost:3000 ou http://127.0.0.1:3000
+
+
+### Web service avec expressJs
+
+il faut installer le module request (qui permet effectivement de générer une requête via une URL depuis son backend).
+
+    npm install request --save    
